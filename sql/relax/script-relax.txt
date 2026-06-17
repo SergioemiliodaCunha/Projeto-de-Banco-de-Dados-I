@@ -1,0 +1,115 @@
+group: MaximusFitness
+
+Aluno = {
+id_aluno:number, nome:string, CPF:string, telefone:string, email:string, historico_saude:string, data_nascimento:string, cidade:string, rua:string, bairro:string, numero:string, estado:string, cep:string
+
+1,'João Silva','12345678901','77999990001','[joao@email.com](mailto:joao@email.com)','Hipertensão','1995-05-10','Vitória da Conquista','Rua A','Centro','101','BA','45000000'
+2,'Maria Souza','12345678902','77999990002','[maria@email.com](mailto:maria@email.com)','Nenhum','1998-08-15','Vitória da Conquista','Rua B','Candeias','202','BA','45028000'
+3,'Carlos Oliveira','12345678903','77999990003','[carlos@email.com](mailto:carlos@email.com)','Diabetes','1992-01-20','Vitória da Conquista','Rua C','Brasil','303','BA','45010000'
+4,'Ana Lima','12345678904','77999990004','[ana@email.com](mailto:ana@email.com)','Nenhum','1999-04-11','Vitória da Conquista','Rua D','Centro','404','BA','45000000'
+5,'Lucas Santos','12345678905','77999990005','[lucas@email.com](mailto:lucas@email.com)','Asma','1997-03-22','Vitória da Conquista','Rua E','Patagônia','505','BA','45065000'
+6,'Fernanda Rocha','12345678906','77999990006','[fernanda@email.com](mailto:fernanda@email.com)','Nenhum','1993-12-01','Vitória da Conquista','Rua F','Brasil','606','BA','45010000'
+7,'Pedro Alves','12345678907','77999990007','[pedro@email.com](mailto:pedro@email.com)','Nenhum','1994-06-15','Vitória da Conquista','Rua G','Centro','707','BA','45000000'
+8,'Juliana Costa','12345678908','77999990008','[juliana@email.com](mailto:juliana@email.com)','Hipertensão','1996-08-10','Vitória da Conquista','Rua H','Candeias','808','BA','45028000'
+9,'Rafael Gomes','12345678909','77999990009','[rafael@email.com](mailto:rafael@email.com)','Nenhum','2000-09-20','Vitória da Conquista','Rua I','Patagônia','909','BA','45065000'
+10,'Patrícia Nunes','12345678910','77999990010','[patricia@email.com](mailto:patricia@email.com)','Nenhum','1991-11-30','Vitória da Conquista','Rua J','Brasil','100','BA','45010000'
+}
+
+Plano = {
+id_plano:number, tipo:string, status:string, valor:number
+
+1,'mensal','ativo',99.90
+2,'trimestral','ativo',270.00
+3,'semestral','ativo',500.00
+4,'diaria','ativo',15.00
+}
+
+Assinatura = {
+id_assinatura:number, data_inicio:string, status:string, data_fim:string, data_vencimento:string, valor_assinatura:number, fk_Aluno_id_aluno:number, fk_Plano_id_plano:number
+
+1,'2025-01-01','ativa','2025-01-31','2025-01-10',99.90,1,1
+2,'2025-01-01','inadimplente','2025-01-31','2025-01-10',99.90,2,1
+3,'2025-02-01','ativa','2025-04-30','2025-02-10',270.00,3,2
+4,'2025-02-01','ativa','2025-07-31','2025-02-10',500.00,4,3
+5,'2025-03-01','inadimplente','2025-03-31','2025-03-10',99.90,5,1
+6,'2025-03-01','ativa','2025-05-31','2025-03-10',270.00,6,2
+7,'2025-04-01','ativa','2025-04-01','2025-04-01',15.00,7,4
+8,'2025-04-01','ativa','2025-04-30','2025-04-10',99.90,8,1
+9,'2025-05-01','ativa','2025-10-31','2025-05-10',500.00,9,3
+10,'2025-05-01','inadimplente','2025-05-31','2025-05-10',99.90,10,1
+}
+
+Pagamento = {
+id_pagamento:number, data_pagamento:string, valor:number, forma_pagamento:string, comprovante:string, fk_Assinatura_id_assinatura:number
+
+1,'2025-01-05',99.90,'PIX','comp001',1
+2,'2025-02-05',270.00,'Cartao','comp002',3
+3,'2025-02-05',500.00,'PIX','comp003',4
+4,'2025-03-05',270.00,'Dinheiro','comp004',6
+5,'2025-04-01',15.00,'PIX','comp005',7
+6,'2025-04-05',99.90,'Cartao','comp006',8
+7,'2025-05-05',500.00,'PIX','comp007',9
+}
+
+Instrutor = {
+id_instrutor:number, nome:string, telefone:string, email:string, CREF:string
+
+1,'Ana Pereira','77999991111','[ana@maximus.com](mailto:ana@maximus.com)','CREF001'
+2,'Lucas Santos','77999992222','[lucas@maximus.com](mailto:lucas@maximus.com)','CREF002'
+3,'Marcos Lima','77999993333','[marcos@maximus.com](mailto:marcos@maximus.com)','CREF003'
+}
+
+Avaliacao_Fisica = {
+id_avaliacao:number, peso:number, altura:number, data:string, IMC:number, historico_saude_consultado:string, status_avaliacao:string, fk_Instrutor_id_instrutor:number, fk_Aluno_id_aluno:number
+
+1,80.5,1.75,'2025-01-15',26.29,'Hipertensão','concluida',1,1
+2,65.0,1.68,'2025-02-20',23.03,'Nenhum','pendente',2,2
+3,90.0,1.80,'2025-03-10',27.78,'Diabetes','concluida',1,3
+4,70.0,1.70,'2025-04-10',24.22,'Nenhum','concluida',3,4
+5,82.0,1.78,'2025-05-05',25.88,'Asma','pendente',2,5
+6,68.0,1.72,'2025-05-15',22.99,'Nenhum','concluida',1,6
+}
+
+Acesso = {
+id_acesso:number, data_hora:string, tipo:string, fk_Aluno_id_aluno:number
+
+1,'2025-01-01 08:00','entrada',1
+2,'2025-01-01 10:00','saida',1
+3,'2025-01-02 08:00','entrada',1
+4,'2025-01-03 08:00','entrada',1
+5,'2025-01-04 08:00','entrada',1
+6,'2025-01-05 08:00','entrada',1
+
+7,'2025-02-01 08:00','entrada',2
+8,'2025-02-02 08:00','entrada',2
+
+9,'2025-03-01 08:00','entrada',3
+10,'2025-03-02 08:00','entrada',3
+11,'2025-03-03 08:00','entrada',3
+12,'2025-03-04 08:00','entrada',3
+
+13,'2025-04-01 08:00','entrada',4
+14,'2025-04-02 08:00','entrada',4
+15,'2025-04-03 08:00','entrada',4
+
+16,'2025-05-01 08:00','entrada',5
+17,'2025-05-02 08:00','entrada',5
+
+18,'2025-05-03 08:00','entrada',6
+19,'2025-05-04 08:00','entrada',6
+20,'2025-05-05 08:00','entrada',6
+
+21,'2025-05-06 08:00','entrada',7
+22,'2025-05-07 08:00','entrada',7
+
+23,'2025-05-08 08:00','entrada',8
+24,'2025-05-09 08:00','entrada',8
+25,'2025-05-10 08:00','entrada',8
+
+26,'2025-05-11 08:00','entrada',9
+27,'2025-05-12 08:00','entrada',9
+28,'2025-05-13 08:00','entrada',9
+29,'2025-05-14 08:00','entrada',9
+
+30,'2025-05-15 08:00','entrada',10
+}
